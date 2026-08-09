@@ -160,23 +160,29 @@
     }
 
     /* Primary Interactive Buttons */
-    .btn-gradient {
-      background: linear-gradient(135deg, var(--accent-green), #00b359);
-      color: #050d08;
+    .btn-action {
       font-weight: 700;
-      padding: 14px 32px;
+      padding: 14px 28px;
       border-radius: 9999px;
-      box-shadow: 0 0 15px var(--glow-green);
-      transition: transform 0.2s ease, background 0.2s ease;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: none;
+      outline: none;
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, var(--accent-green), #00b359);
+      color: #050d08;
+      box-shadow: 0 0 20px var(--glow-green);
     }
 
     .btn-gradient:hover {
-      transform: scale(1.04);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 30px var(--accent-green);
       background: #ffffff;
       color: #000;
     }
@@ -184,13 +190,18 @@
     .btn-gradient-pink {
       background: linear-gradient(135deg, var(--accent-pink), #ff1f4b);
       color: #ffffff;
-      box-shadow: 0 0 15px var(--glow-pink);
+      box-shadow: 0 0 20px var(--glow-pink);
     }
 
     .btn-gradient-pink:hover {
-      transform: scale(1.04);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 30px var(--accent-pink);
       background: #ffffff;
       color: var(--accent-pink);
+    }
+
+    .btn-action:active {
+      transform: scale(0.96);
     }
 
     /* Section Visibility Router */
@@ -342,8 +353,8 @@
 
     .polaroid-frame {
       background: #ffffff;
-      padding: 14px 14px 45px 14px;
-      border-radius: 8px;
+      padding: 14px 14px 20px 14px;
+      border-radius: 12px;
       color: #111;
       box-shadow: 0 15px 35px rgba(0,0,0,0.5);
       transition: transform 0.2s ease;
@@ -388,24 +399,27 @@
     }
 
     .icon-3d-wrapper {
-      width: 58px;
-      height: 58px;
-      border-radius: 18px;
+      width: 62px;
+      height: 62px;
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3);
     }
 
     .icon-svg-3d {
       width: 44px;
       height: 44px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
     }
 
     .tile-split-heart-3d {
       width: 42px;
       height: 42px;
       animation: heartPulse 1.4s infinite ease-in-out;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
     }
 
     @keyframes heartPulse {
@@ -452,7 +466,7 @@
 </head>
 <body>
 
-  <!-- Parallax Background Layer (Aurora, Moon, Clouds) -->
+  <!-- Parallax Background Layer -->
   <div class="parallax-bg" id="parallaxBg">
     <div class="aurora-sky"></div>
     <div class="full-moon"></div>
@@ -471,7 +485,7 @@
 
   <!-- Audio Controls Top Bar -->
   <header class="fixed top-4 right-4 z-50 flex items-center gap-3">
-    <button id="musicToggleBtn" onclick="toggleBGM()" class="glass-card px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 border border-emerald-500/40 text-emerald-400">
+    <button id="musicToggleBtn" onclick="toggleBGM()" class="glass-card px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 border border-emerald-500/40 text-emerald-400 hover:scale-105 transition">
       <i class="fa-solid fa-music" id="musicIcon"></i>
       <span id="musicStatusText">Play Music 🎵</span>
     </button>
@@ -490,18 +504,18 @@
     </linearGradient>
 
     <linearGradient id="camGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00ff88" />
-      <stop offset="100%" stop-color="#008855" />
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#00ff88" />
     </linearGradient>
 
     <linearGradient id="wishesGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ff4d6d" />
-      <stop offset="100%" stop-color="#ff1f4b" />
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#ff4d6d" />
     </linearGradient>
 
     <linearGradient id="envGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffd700" />
-      <stop offset="100%" stop-color="#e6a100" />
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#ffd700" />
     </linearGradient>
 
     <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -521,14 +535,14 @@
         </div>
 
         <h1 class="text-3xl sm:text-4xl font-bold font-great-vibes glow-text-green mb-2">Welcome My Love! 🔐</h1>
-        <p class="text-xs sm:text-sm text-gray-300 mb-6">Nama date of birth ah PIN podu pattu...</p>
+        <p class="text-xs sm:text-sm text-gray-300 mb-6">Namuku matum therinja andha secret PIN-ah enter panu darluu...</p>
 
         <div class="flex flex-col items-center gap-4">
           <input type="password" id="pinInput" maxlength="4" placeholder="••••" class="w-44 text-center text-3xl tracking-[12px] py-2 px-4 rounded-xl bg-black/80 border-2 border-emerald-400 text-emerald-400 outline-none">
-          <button onclick="verifyPin()" class="btn-gradient text-sm mt-2">
+          <button onclick="verifyPin()" class="btn-action btn-gradient text-sm mt-2">
             Unlock Love 💖 <i class="fa-solid fa-heart"></i>
           </button>
-          <p id="pinErrorMsg" class="text-xs text-rose-400 mt-1 hidden font-medium">Wrong Secret Pin Darluu! Hint: 1617 or 28 😉</p>
+          <p id="pinErrorMsg" class="text-xs text-rose-400 mt-1 hidden font-medium">Wrong Secret Pin Darluu! Hint: 1234 or 28 😉</p>
         </div>
       </div>
     </section>
@@ -537,7 +551,7 @@
     <section id="sec-cake" class="app-section">
       <div class="glass-card neon-border-pink p-8 text-center">
         <h2 class="text-3xl font-bold font-great-vibes glow-text-pink mb-1">Make a Wish & Blow Candle! 🕯️</h2>
-        <p class="text-xs text-gray-300">Mic-la blow panu or keela irukura button-ah click panu darluu!</p>
+        <p class="text-xs text-gray-300 mb-2">Mic-la blow panu or keela irukura button-ah click panu darluu!</p>
 
         <div class="cake-container" onclick="extinguishCandle()">
           <div class="candle-stick">
@@ -551,11 +565,12 @@
           </div>
         </div>
 
-        <div class="flex flex-col sm:flex-row justify-center gap-3 mt-6">
-          <button onclick="extinguishCandle()" class="btn-gradient-pink text-sm">
-            💨 Blow Candle
+        <!-- BLOW CANDLE BUTTONS -->
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-3 mt-6">
+          <button onclick="extinguishCandle()" class="btn-action btn-gradient-pink text-sm w-full sm:w-auto">
+            <i class="fa-solid fa-wind"></i> Blow Candle 💨
           </button>
-          <button id="micBtn" onclick="initMicBlow()" class="glass-card px-5 py-3 rounded-full text-xs font-semibold text-emerald-300 border border-emerald-500/40 flex items-center justify-center gap-2">
+          <button id="micBtn" onclick="initMicBlow()" class="glass-card px-5 py-3 rounded-full text-xs font-semibold text-emerald-300 border border-emerald-500/40 flex items-center justify-center gap-2 hover:bg-emerald-500/20 transition">
             <i class="fa-solid fa-microphone"></i> Use Mic Blow
           </button>
         </div>
@@ -574,7 +589,9 @@
         <p class="text-xs text-gray-300 leading-relaxed mb-6 max-w-md mx-auto">
           Innum neraya varusam ipdiye santhosama, en koodave sirichute irukanum! May your year be filled with magic and infinite love. ❤️
         </p>
-        <button onclick="navigateTo('sec-camera')" class="btn-gradient text-sm">
+
+        <!-- NEXT SURPRISE BUTTON -->
+        <button onclick="navigateTo('sec-camera')" class="btn-action btn-gradient text-sm">
           Next Surprise 📸 <i class="fa-solid fa-arrow-right"></i>
         </button>
       </div>
@@ -591,14 +608,18 @@
           <i class="fa-solid fa-camera text-4xl text-emerald-400"></i>
         </div>
 
-        <div id="polaroidCard" class="polaroid-frame mt-6 hidden max-w-xs mx-auto">
-          <img src="1733543689836.jpg" alt="Sweet Couple Memory" class="w-full h-56 object-cover rounded">
-          <h4 class="font-dancing text-lg font-bold text-gray-900 mt-3">Forever With You 🌎✨</h4>
-          <p class="text-[10px] text-gray-500 font-sans">Happy Birthday En Anbe!</p>
+        <!-- Polaroid Frame Enhanced for Full Image View -->
+        <div id="polaroidCard" class="polaroid-frame mt-6 hidden max-w-xs sm:max-w-sm mx-auto transition-all">
+          <div class="overflow-hidden rounded-lg cursor-pointer" onclick="openFullscreenImg('1733543689836.jpg')">
+            <img src="Penguins.jpg" alt="Sweet Couple Memory" class="w-full h-64 sm:h-72 object-cover hover:scale-105 transition duration-300">
+          </div>
+          <h4 class="font-dancing text-xl font-bold text-gray-900 mt-3">Forever With You 🌎✨</h4>
+          <p class="text-xs text-gray-500 font-sans mt-1">Tap image for Full Screen 🔍</p>
         </div>
 
-        <button id="camNextBtn" onclick="navigateTo('sec-dashboard')" class="btn-gradient-pink text-sm mt-6 hidden">
-          Open Surprise Gifts 🎁 <i class="fa-solid fa-gift"></i>
+        <!-- OPEN SWEET SURPRISES BUTTON -->
+        <button id="camNextBtn" onclick="navigateTo('sec-dashboard')" class="btn-action btn-gradient-pink text-sm mt-6 hidden">
+          Open Sweet Surprises 🎁 <i class="fa-solid fa-gift"></i>
         </button>
       </div>
     </section>
@@ -616,7 +637,7 @@
 
           <!-- Tile 1: Memories -->
           <div class="menu-tile" onclick="openModal('modal-memories')">
-            <div class="icon-3d-wrapper bg-gradient-to-br from-emerald-500/20 to-emerald-950/60 border border-emerald-400/30">
+            <div class="icon-3d-wrapper bg-gradient-to-br from-emerald-400 via-teal-500 to-emerald-700 border-2 border-emerald-200">
               <svg class="icon-svg-3d" viewBox="0 0 64 64">
                 <rect x="8" y="18" width="48" height="34" rx="8" fill="url(#camGrad)" />
                 <circle cx="32" cy="35" r="11" fill="#111827" stroke="#ffffff" stroke-width="3" />
@@ -628,7 +649,7 @@
 
           <!-- Tile 2: Sweet Wishes -->
           <div class="menu-tile" onclick="openModal('modal-wishes')">
-            <div class="icon-3d-wrapper bg-gradient-to-br from-pink-500/20 to-pink-950/60 border border-pink-400/30">
+            <div class="icon-3d-wrapper bg-gradient-to-br from-pink-400 via-rose-500 to-pink-700 border-2 border-pink-200">
               <svg class="icon-svg-3d" viewBox="0 0 64 64">
                 <rect x="10" y="24" width="44" height="30" rx="6" fill="url(#wishesGrad)" />
                 <path d="M6 18h52v8H6z" fill="#ff708a" />
@@ -640,16 +661,11 @@
 
           <!-- Tile 3: Love Letter -->
           <div class="menu-tile" onclick="openModal('modal-letter')">
-            <div class="icon-3d-wrapper bg-gradient-to-br from-amber-500/20 to-amber-950/60 border border-amber-400/30">
+            <div class="icon-3d-wrapper bg-gradient-to-br from-amber-300 via-amber-500 to-yellow-600 border-2 border-amber-100">
               <svg class="icon-svg-3d" viewBox="0 0 64 64">
-                <!-- Envelope Body -->
                 <rect x="8" y="24" width="48" height="32" rx="4" fill="url(#envGrad)" />
                 <path d="M8 24l24 16 24-16" fill="none" stroke="#b37d00" stroke-width="2" />
-                
-                <!-- Opened Flap Top -->
                 <polygon points="8,24 32,8 56,24" fill="#ffea75" opacity="0.9" />
-                
-                <!-- Heart-shaped Paper Coming Out -->
                 <path d="M32 16 C 32 12, 26 10, 24 14 C 22 10, 16 12, 16 16 C 16 22, 24 26, 32 30 C 40 26, 48 22, 48 16 C 48 12, 42 10, 40 14 C 38 10, 32 12, 32 16 Z" fill="url(#heartGrad)" />
               </svg>
             </div>
@@ -658,7 +674,7 @@
 
           <!-- Tile 4: My Heart Says -->
           <div class="menu-tile" onclick="openModal('modal-heart')">
-            <div class="icon-3d-wrapper bg-gradient-to-br from-emerald-500/10 to-gray-900/80 border border-emerald-400/40">
+            <div class="icon-3d-wrapper bg-gradient-to-br from-purple-500 via-indigo-600 to-slate-900 border-2 border-purple-300">
               <svg class="tile-split-heart-3d" viewBox="0 0 32 29.6">
                 <path fill="url(#splitGreenBlackGrad)" d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
               </svg>
@@ -676,24 +692,28 @@
 
   </main>
 
-  <!-- MODAL 1: MEMORIES PHOTO GALLERY -->
+  <!-- MODAL 1: MEMORIES PHOTO GALLERY (ENHANCED FOR FULL DISPLAY) -->
   <div id="modal-memories" class="app-modal">
-    <div class="glass-card neon-border-green w-full max-w-md p-6 relative max-h-[85vh] overflow-y-auto custom-scroll">
-      <button onclick="closeModal('modal-memories')" class="absolute top-4 right-4 text-gray-400 hover:text-emerald-400 text-xl">
+    <div class="glass-card neon-border-green w-full max-w-2xl p-6 relative max-h-[90vh] overflow-y-auto custom-scroll">
+      <button onclick="closeModal('modal-memories')" class="absolute top-4 right-4 text-gray-400 hover:text-emerald-400 text-2xl z-20">
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <h3 class="text-2xl font-bold font-great-vibes glow-text-green text-center mb-4">Our Sweet Memories ✨</h3>
+      <h3 class="text-3xl font-bold font-great-vibes glow-text-green text-center mb-6">Our Sweet Memories ✨</h3>
 
-      <div class="space-y-4">
+      <div class="grid grid-cols-1 gap-6">
         <div class="bg-black/50 p-3 rounded-2xl border border-gray-800">
-          <img src="169235411557.jpg" alt="Memory 1" class="w-full h-44 object-cover rounded-xl mb-2" loading="lazy">
-          <p class="text-emerald-300 font-dancing text-center text-base">"Unnodu pesiya mudhal nodi..." 💚</p>
+          <div class="overflow-hidden rounded-xl cursor-pointer" onclick="openFullscreenImg('Chrysanthemum.jpg')">
+            <img src="169235411557.jpg" alt="Memory 1" class="w-full h-64 sm:h-80 object-cover hover:scale-105 transition duration-300" loading="lazy">
+          </div>
+          <p class="text-emerald-300 font-dancing text-center text-lg mt-3">"Unnodu pesiya mudhal nodi..." 💚</p>
         </div>
 
         <div class="bg-black/50 p-3 rounded-2xl border border-gray-800">
-          <img src="1703040985681.jpg" alt="Memory 2" class="w-full h-44 object-cover rounded-xl mb-2" loading="lazy">
-          <p class="text-pink-300 font-dancing text-center text-base">"En vazhvin azhagana kavidhai needhan..." 👑</p>
+          <div class="overflow-hidden rounded-xl cursor-pointer" onclick="openFullscreenImg('Tulips.jpg')">
+            <img src="1703040985681.jpg" alt="Memory 2" class="w-full h-64 sm:h-80 object-cover hover:scale-105 transition duration-300" loading="lazy">
+          </div>
+          <p class="text-pink-300 font-dancing text-center text-lg mt-3">"En vazhvin azhagana kavidhai needhan..." 👑</p>
         </div>
       </div>
     </div>
@@ -762,9 +782,19 @@
     </div>
   </div>
 
+  <!-- FULLSCREEN IMAGE LIGHTBOX MODAL -->
+  <div id="modal-fullscreen-img" class="app-modal" onclick="closeFullscreenImg()">
+    <div class="relative max-w-4xl max-h-[90vh] p-2 flex items-center justify-center">
+      <button onclick="closeFullscreenImg()" class="absolute -top-10 right-0 text-white text-3xl font-bold hover:text-emerald-400">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <img id="fullscreenImgSrc" src="" alt="Full Screen Memory" class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl border-2 border-emerald-400">
+    </div>
+  </div>
+
   <script>
     const CONFIG = {
-      SECRET_PINS: ["1617", "28"],
+      SECRET_PINS: ["1234", "28"],
       WISHES_TEXT: `My Dearest Pattu,\n\nOn your special day, I just want to remind you how deeply and truly you are loved.\n\nMay your year be filled with endless smiles, unlimited success, and all the warm hugs in the universe. You make my world complete! ❤️✨`,
       LETTER_TEXT: `En Anbu Pattu-vukku,\n\nUnnodu pesiya mudhal nodiyil irundhu indha nodi varai, en vaazhkaiyodaa azhagae needhaan. Un sirippu en velicham, un anbu en balaam.\n\nIni varum ella varushangalilum un koodave naan irupen.\n\nHappy Birthday My Everything! 💚🖤`
     };
@@ -902,6 +932,21 @@
       }, 500);
     }
 
+    /* FULLSCREEN IMAGE HANDLERS */
+    function openFullscreenImg(imgUrl) {
+      playSfx('click');
+      const modal = document.getElementById('modal-fullscreen-img');
+      const img = document.getElementById('fullscreenImgSrc');
+      img.src = imgUrl;
+      modal.classList.add('active');
+    }
+
+    function closeFullscreenImg() {
+      playSfx('click');
+      const modal = document.getElementById('modal-fullscreen-img');
+      modal.classList.remove('active');
+    }
+
     /* TYPEWRITER ENGINE */
     let wishesTypeTimer = null;
     let letterTypeTimer = null;
@@ -970,7 +1015,7 @@
       }
     }
 
-    /* CANVAS CANVAS ENGINE: STARS, FLYING HEARTS, BUTTERFLIES, SAKURA & PETALS */
+    /* CANVAS CANVAS ENGINE */
     const fxCanvas = document.getElementById('fxCanvas');
     const fxCtx = fxCanvas.getContext('2d');
     const petalsCanvas = document.getElementById('petalsCanvas');
@@ -990,7 +1035,6 @@
     }
     window.addEventListener('resize', resizeCanvas);
 
-    // 1. Twinkling Stars & Floating Elements
     class Star {
       constructor() { this.reset(); }
       reset() {
@@ -1017,7 +1061,7 @@
 
     class FloatingItem {
       constructor(type) {
-        this.type = type; // 'heart', 'butterfly'
+        this.type = type;
         this.reset();
       }
       reset() {
@@ -1051,11 +1095,9 @@
           fxCtx.scale(0.8, 0.8);
           let wingScale = Math.sin(this.wingAngle);
           fxCtx.fillStyle = "rgba(236, 72, 153, 0.8)";
-          // Left Wing
           fxCtx.beginPath();
           fxCtx.ellipse(-6 * wingScale, 0, 8 * Math.abs(wingScale), 12, Math.PI / 4, 0, Math.PI * 2);
           fxCtx.fill();
-          // Right Wing
           fxCtx.beginPath();
           fxCtx.ellipse(6 * wingScale, 0, 8 * Math.abs(wingScale), 12, -Math.PI / 4, 0, Math.PI * 2);
           fxCtx.fill();
@@ -1064,7 +1106,6 @@
       }
     }
 
-    // 2. Rose Petals & Sakura Petals
     class FallingPetal {
       constructor() { this.reset(); }
       reset() {
@@ -1103,7 +1144,6 @@
       }
     }
 
-    // Initialize Canvas Objects
     for (let i = 0; i < 45; i++) stars.push(new Star());
     for (let i = 0; i < 8; i++) fxItems.push(new FloatingItem('heart'));
     for (let i = 0; i < 6; i++) fxItems.push(new FloatingItem('butterfly'));
@@ -1130,7 +1170,7 @@
       document.getElementById('parallaxMain').style.transform = `translate(${-x * 0.3}px, ${-y * 0.3}px)`;
     });
 
-    /* REALISTIC 3D SPHERICAL BALLOONS ENGINE WITH STRINGS */
+    /* BALLOONS ENGINE */
     const balloonCanvas = document.getElementById('balloonCanvas');
     const bCtx = balloonCanvas.getContext('2d');
     let balloons = [];
@@ -1242,6 +1282,7 @@
         fwParticles.push(new FWParticle(x, y, '#ff4d6d'));
       }
     }
+
     function renderFireworks() {
       fCtx.clearRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
       for (let i = fwParticles.length - 1; i >= 0; i--) {
